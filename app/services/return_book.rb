@@ -1,0 +1,2 @@
+class ReturnBook < ApplicationService
+end
