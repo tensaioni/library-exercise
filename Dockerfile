@@ -18,9 +18,6 @@ WORKDIR /rails
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libvips postgresql-client
 
-# Set production environment variables and enable jemalloc for reduced memory usage and latency.
-ENV RAILS_ENV="development"
-
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips libyaml-dev pkg-config && \
