@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:17
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432"
+  web:
+    command: 
+      - /bin/bash
+      - -c
+      - |
+        rails db:prepare
+        bundle exec rails server -b 0.0.0.0
+    restart: always
+    build: .
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres
+
+volumes:
+  postgres:
