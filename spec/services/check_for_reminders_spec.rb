@@ -12,8 +12,8 @@ RSpec.describe CheckForReminders, type: :service do
       let!(:lease) { create(:lease, book: book, reader: reader, created_at: 30.days.ago) }
 
       it "calls the correct mailer" do
-        expect(ReminderMailer).to receive(:short_reminder)
-        expect(ReminderMailer).not_to receive(:long_reminder)
+        expect(ReminderMailer).to receive(:short_reminder).and_call_original
+        expect(ReminderMailer).not_to receive(:long_reminder).and_call_original
 
         service_call
       end
@@ -23,8 +23,8 @@ RSpec.describe CheckForReminders, type: :service do
       let!(:lease) { create(:lease, book: book, reader: reader, created_at: 28.days.ago) }
 
       it "calls the correct mailer" do
-        expect(ReminderMailer).not_to receive(:short_reminder)
-        expect(ReminderMailer).not_to receive(:long_reminder)
+        expect(ReminderMailer).not_to receive(:short_reminder).and_call_original
+        expect(ReminderMailer).not_to receive(:long_reminder).and_call_original
 
         service_call
       end
@@ -34,8 +34,8 @@ RSpec.describe CheckForReminders, type: :service do
       let!(:lease) { create(:lease, book: book, reader: reader, created_at: 27.days.ago) }
 
       it "calls the correct mailer" do
-        expect(ReminderMailer).not_to receive(:short_reminder)
-        expect(ReminderMailer).to receive(:long_reminder)
+        expect(ReminderMailer).not_to receive(:short_reminder).and_call_original
+        expect(ReminderMailer).to receive(:long_reminder).and_call_original
 
         service_call
       end
@@ -45,8 +45,8 @@ RSpec.describe CheckForReminders, type: :service do
       let!(:lease) { create(:lease, book: book, reader: reader, created_at: 23.days.ago) }
 
       it "calls the correct mailer" do
-        expect(ReminderMailer).not_to receive(:short_reminder)
-        expect(ReminderMailer).not_to receive(:long_reminder)
+        expect(ReminderMailer).not_to receive(:short_reminder).and_call_original
+        expect(ReminderMailer).not_to receive(:long_reminder).and_call_original
 
         service_call
       end
@@ -56,8 +56,8 @@ RSpec.describe CheckForReminders, type: :service do
       let!(:lease) { create(:lease, book: book, reader: reader, created_at: 1.year.ago) }
 
       it "calls the correct mailer" do
-        expect(ReminderMailer).to receive(:short_reminder)
-        expect(ReminderMailer).not_to receive(:long_reminder)
+        expect(ReminderMailer).to receive(:short_reminder).and_call_original
+        expect(ReminderMailer).not_to receive(:long_reminder).and_call_original
 
         service_call
       end

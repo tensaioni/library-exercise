@@ -11,11 +11,11 @@ class CheckForReminders < ApplicationService
     short_cutoff_date = ..short_cutoff_days.days.ago.end_of_day
 
     not_returned_leases.where(created_at: long_cutoff_date).each do |lease|
-      ReminderMailer.long_reminder(lease: lease)
+      ReminderMailer.long_reminder(lease: lease).deliver_later
     end
 
     not_returned_leases.where(created_at: short_cutoff_date).each do |lease|
-      ReminderMailer.short_reminder(lease: lease)
+      ReminderMailer.short_reminder(lease: lease).deliver_later
     end
   end
 end
