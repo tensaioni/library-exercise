@@ -8,7 +8,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
 
     it "returns a list of books" do
       get api_v1_books_path
-      expected_json = { "data" => [{"attributes" => {"author" => @book.author, "available?" => true, "serial_number" => @book.serial_number, "title" => @book.title}, "id" => @book.serial_number, "type" => "book"}] }
+      expected_json = { "data" => [ { "attributes" => { "author" => @book.author, "available?" => true, "serial_number" => @book.serial_number, "title" => @book.title }, "id" => @book.serial_number, "type" => "book" } ] }
       expect(json_response).to include(expected_json)
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Api::V1::BooksController, type: :request do
 
     it "returns a book" do
       get api_v1_book_path(@book.serial_number)
-      expected_json = { "data" => {"attributes" => {"author" => @book.author, "serial_number" => @book.serial_number, "title" => @book.title}, "id" => @book.serial_number, "relationships" => {"leases" => {"data" => []}}, "type" => "book_history"}, "included" => [] }
+      expected_json = { "data" => { "attributes" => { "author" => @book.author, "serial_number" => @book.serial_number, "title" => @book.title }, "id" => @book.serial_number, "relationships" => { "leases" => { "data" => [] } }, "type" => "book_history" }, "included" => [] }
 
       expect(json_response).to include(expected_json)
     end

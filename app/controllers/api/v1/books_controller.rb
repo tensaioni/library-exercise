@@ -17,7 +17,7 @@ class Api::V1::BooksController < ApplicationController
 
   def show
     @book = Book.find_by(serial_number: params[:id])
-    book_json = BookHistorySerializer.new(@book, include: [:leases, :'leases.reader']).serializable_hash.to_json
+    book_json = BookHistorySerializer.new(@book, include: [ :leases, :'leases.reader' ]).serializable_hash.to_json
 
     render json: book_json
   end

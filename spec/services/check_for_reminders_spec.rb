@@ -7,7 +7,6 @@ RSpec.describe CheckForReminders, type: :service do
   subject(:service_call) { CheckForReminders.call }
 
   describe "#call" do
-
     context "when there's a book due today" do
       let!(:lease) { create(:lease, book: book, reader: reader, created_at: 30.days.ago) }
 

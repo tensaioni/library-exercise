@@ -8,7 +8,7 @@ class ApplicationService
     # CASE 2: Keyword arguments are provided.
     unless kwargs.empty?
       # Check if the initializer expects keyword arguments.
-      arg_types = %i(key keyreq keyrest)
+      arg_types = %i[key keyreq keyrest]
 
       if init_params.any? { |type, _| arg_types.include?(type) }
         # The initializer accepts keywords, so forward them.
@@ -23,7 +23,7 @@ class ApplicationService
     end
 
     # CASE 3a: A single positional hash, but initialize expects keywords
-    arg_types = %i(key keyreq keyrest)
+    arg_types = %i[key keyreq keyrest]
     if kwargs.empty? && args.size == 1 && init_params.any? { |type, _| arg_types.include?(type) } &&
        args.first.is_a?(Hash)
       return new(**args.first, &block).call
