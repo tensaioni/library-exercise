@@ -1,6 +1,6 @@
 class Api::V1::BooksController < ApplicationController
   def index
-    books_json = BookSerializer.new(Book.all).serializable_hash.to_json
+    books_json = BookSerializer.new(Book.includes(:open_leases)).serializable_hash.to_json
     render json: books_json
   end
 
