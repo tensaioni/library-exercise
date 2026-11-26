@@ -5,9 +5,9 @@ class ReminderMailer < ApplicationMailer
 
     subject = if LONG_REMINDER_DAYS.zero?
                 "Your book is due today!"
-              else
+    else
                 "Your book is due in #{LONG_REMINDER_DAYS} days!"
-              end
+    end
 
     mail(to: @reader.email, subject: subject)
   end
@@ -18,9 +18,9 @@ class ReminderMailer < ApplicationMailer
 
     subject = if SHORT_REMINDER_DAYS.zero?
                 "Your book is due today!"
-              else
+    else
                 "Your book is due in #{SHORT_REMINDER_DAYS} days!"
-              end
+    end
 
     mail(to: @reader.email, subject: subject)
   end
