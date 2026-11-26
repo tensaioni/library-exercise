@@ -20,3 +20,4 @@ App will be available by default at http://localhost:3000
 - authentication/authorization
 - more robust reminders, if for whatever reason a reminder for the specific day can't be sent, it maybe should've been sent another day with more customized message?
 - better book lease lifecycle, saving a due_date during lease creation, doing some actions where book is overdue etc.
+- pagination in controllers (wasn't necessary due to small scale)
